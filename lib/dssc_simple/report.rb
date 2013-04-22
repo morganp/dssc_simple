@@ -4,6 +4,7 @@ module DsscSimple
   
   REGEXP_TIMESTAMP  = '\d\d\/\d\d\/\d\d\d\d \d\d:\d\d'
   REGEXP_VERSION    = '\d*\.\d*'
+  REGEXP_USER       = '\w*'  
   WS                = '\s*'
   STATUS_WIDTH      = 10
 
