@@ -74,7 +74,7 @@ module DsscSimple
           line[$1.to_s] = ''
           items << Item.new( :status_locked, line.strip )
         
-        when /^(\s*File\s*Up-to-date\s*Locally Modified\s*Lock\s*\w*\*\s*#{REGEXP_VERSION}\s*)/
+        when /^(\s*File\s*Up-to-date\s*Locally Modified\s*Lock\s*#{REGEXP_USER}\*\s*#{REGEXP_VERSION}\s*)/
           line[$1.to_s] = ''
           items << Item.new( :status_locked_mod, line.strip )
 
@@ -106,7 +106,7 @@ module DsscSimple
           line[$1.to_s] = ''
           items << Item.new( :status_rep_mod,  line.strip) 
 
-        when /^(\s*Cached File\s*Up-to-date\s*Cache\s*\w*\s*#{REGEXP_VERSION})/
+        when /^(\s*Cached File\s*Up-to-date\s*Cache\s*#{REGEXP_USER}\s*#{REGEXP_VERSION})/
           line[$1.to_s] = ''
           items << Item.new( :status_rep_locked,  line.strip)
 
