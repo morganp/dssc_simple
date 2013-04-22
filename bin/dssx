@@ -1,0 +1,26 @@
+#!/usr/bin/env ruby
+
+begin
+  require_relative File.join('..', 'lib', 'dssx')
+  require_relative File.join('..', 'lib', 'dssx', 'cli')
+  
+rescue
+  # Ruby 1.8 Falls back here
+  require 'rubygems'
+
+  $LOAD_PATH.unshift File.join( File.dirname(__FILE__), '..', 'lib')
+  require 'dssx'
+  require 'dssx/cli'
+end
+
+Dssx::CLI.start
+
+#if ARGV[0] == 'status'
+#  path = ARGV[1]
+#  path ||= Dir.pwd
+#
+#
+#  report = Dssx::Report.new( path )
+#  report.list_all
+#
+#end

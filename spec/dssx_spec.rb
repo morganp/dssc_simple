@@ -1,10 +1,10 @@
 
 require 'spec_helper'
 
-describe DsscSimple::Report do
+describe Dssx::Report do
   it "run_dssc_ls should be filtered" do
     
-    report = DsscSimple::Report.new()
+    report = Dssx::Report.new()
     report.stub!(:run_dssc_ls_mock) do
       absolute_filename = 
         ::File.absolute_path(

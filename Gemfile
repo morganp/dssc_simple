@@ -1,7 +1,7 @@
 
 source :rubygems
 #If this is a gem 
-#Normal gems go in dssc_simple.gemspec
+#Normal gems go in dssx.gemspec
 gemspec
 
 #development and test not install on heroku deployment

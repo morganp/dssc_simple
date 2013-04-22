@@ -1,5 +1,5 @@
 
-module DsscSimple
+module Dssx
   Item = Struct.new(:status, :path)
   
   REGEXP_TIMESTAMP  = '\d\d\/\d\d\/\d\d\d\d \d\d:\d\d'
