@@ -9,15 +9,17 @@ module DsscSimple
   STATUS_WIDTH      = 10
 
   STATUS_OUTPUT = {
-  :status_local         => ''.ljust(STATUS_WIDTH),
-  :status_local_mod     => 'M'.ljust(STATUS_WIDTH),
-  :status_unmanaged     => '?'.ljust(STATUS_WIDTH),
-  :status_local_missing => '!'.ljust(STATUS_WIDTH),
-  :status_cached        => ''.ljust(STATUS_WIDTH),
-  :status_locked        => '     K'.ljust(STATUS_WIDTH),
-  :status_locked_mod    => 'M    K'.ljust(STATUS_WIDTH),
-  :status_rep_mod       => '     *'.ljust(STATUS_WIDTH),
-  :status_rep_locked    => '     O'.ljust(STATUS_WIDTH),
+  :status_local                 => ''.ljust(STATUS_WIDTH),
+  :status_local_mod             => 'M'.ljust(STATUS_WIDTH),
+  :status_unmanaged             => '?'.ljust(STATUS_WIDTH),
+  :status_local_missing         => '!'.ljust(STATUS_WIDTH),
+  :status_cached                => ''.ljust(STATUS_WIDTH),
+  :status_locked                => '     K'.ljust(STATUS_WIDTH),
+  :status_locked_mod            => 'M    K'.ljust(STATUS_WIDTH),
+  :status_rep_mod               => '     *'.ljust(STATUS_WIDTH),
+  :status_rep_locked            => '     O'.ljust(STATUS_WIDTH),
+  :status_lock_broken           => '     B'.ljust(STATUS_WIDTH),
+  :status_local_mod_lock_broken => 'M    B'.ljust(STATUS_WIDTH),
   }
   require 'pp'
 
@@ -106,6 +108,11 @@ module DsscSimple
           line[$1.to_s] = ''
           items << Item.new( :status_rep_mod,  line.strip) 
 
+        ## Not sure how to test as it relies on local user name.
+        when /^(\s*Cached File\s*Up-to-date\s*Cache\s*#{ENV['USER']}\s*#{REGEXP_VERSION})/
+          line[$1.to_s] = ''
+          items << Item.new( :status_lock_broken,  line.strip)
+
         when /^(\s*Cached File\s*Up-to-date\s*Cache\s*#{REGEXP_USER}\s*#{REGEXP_VERSION})/
           line[$1.to_s] = ''
           items << Item.new( :status_rep_locked,  line.strip)
@@ -113,6 +120,15 @@ module DsscSimple
         when /^(\s*Referenced File\s*Up-to-date\s*Reference\s*Refers to:\s*#{REGEXP_VERSION})/
           line[$1.to_s] = ''
           items << Item.new( :status_local_missing,  line.strip)
+        
+        when /^(\s*Referenced File\s*Up-to-date\s*Reference\s*#{REGEXP_USER}\s*Refers to:\s*#{REGEXP_VERSION})/
+          line[$1.to_s] = ''
+          items << Item.new( :status_local_missing,  line.strip)
+
+        when /^(\s*Cached File\s*Up-to-date\s*Locally Modified\s*Cache\s*#{REGEXP_USER}\s*#{REGEXP_VERSION})/
+          line[$1.to_s] = ''
+          items << Item.new( :status_local_mod_lock_broken,  line.strip)
+
 
         when /^(\s*Folder\s*-\s*)/
           ## Ignore
