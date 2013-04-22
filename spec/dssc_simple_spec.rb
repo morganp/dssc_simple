@@ -21,7 +21,7 @@ describe DsscSimple::Report do
     display = report.list_cached
 
     report.list_all
-    display.should == 'Not Nil'
+    display.should_not be_nil
   end
 end
 
