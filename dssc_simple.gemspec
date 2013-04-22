@@ -22,4 +22,5 @@ Gem::Specification.new do |s|
 ").map{ |f| File.basename(f) }
   s.require_paths = ["lib"]
   s.add_dependency('slop', '~> 2.3')
+  s.add_dependency('thor', '~> 0.16.0')
 end
