@@ -35,10 +35,13 @@ module Dssx
     end
 
 
+    option :r
     desc "update [PATH]", "Update to latest repository version"
     def update(path=Dir.pwd)
       puts "dssx update #{path}" 
-      puts "=> dssc pop -rec #{path}" 
+      cmd =  "dssc populate -recursive -replace -full #{path}" 
+      cmd = cmd + " --version #{options[:r]}" if options[:r]
+      puts "=> #{cmd}" 
     end
 
     desc "up [PATH]", "Alias for update"
