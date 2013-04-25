@@ -102,7 +102,9 @@ module Dssx
 
         when /^(\s*File\s*Up-to-date\s*Copy\s*#{REGEXP_VERSION}\s*)/
           line[$1.to_s] = ''
-          items << Item.new( :status_local,  line.strip) 
+          #if (:report_all) begin
+          #  items << Item.new( :status_local,  line.strip) 
+          #end
 
         when /^(\s*Cached File\s*Needs Update\s*Cache\s*#{REGEXP_VERSION}\s*)/
           line[$1.to_s] = ''
