@@ -35,7 +35,7 @@ module Dssx
 
     def display items
       Array( items ).each do |item|
-        puts "#{STATUS_OUTPUT[item.status]} #{item.path}"
+        puts "#{STATUS_OUTPUT[item.status]} #{@path}/#{item.path}"
       end
     end
 
