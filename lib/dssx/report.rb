@@ -35,7 +35,9 @@ module Dssx
 
     def display items
       Array( items ).each do |item|
-        puts "#{STATUS_OUTPUT[item.status]} #{@path}/#{item.path}"
+        #Remove trailing '/'
+        pre_path = @path.gsub(/\/$/, '')
+        puts "#{STATUS_OUTPUT[item.status]} #{pre_path}/#{item.path}"
       end
     end
 
