@@ -1,6 +1,6 @@
 
 module Dssx
-  VERSION = '0.0.2.b'
+  VERSION = '0.0.2.c'
 end
 
 begin
