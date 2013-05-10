@@ -39,7 +39,7 @@ module Dssx
     desc "update [PATH]", "Update to latest repository version"
     def update(path=Dir.pwd)
       puts "dssx update #{path}" 
-      cmd =  "dssc populate -recursive -replace -full #{path}" 
+      cmd =  "dssc populate -recursive -replace -unify #{path}" 
       cmd = cmd + " --version #{options[:r]}" if options[:r]
       puts "=> #{cmd}" 
     end
