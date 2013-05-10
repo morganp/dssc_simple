@@ -65,6 +65,12 @@ module Dssx
       invoke :commit
     end
 
+    desc "lock [PATH]", "Lock file"
+    def ci(path=Dir.pwd) 
+      puts "dssx lock #{path}" 
+      puts "=> dssc co -lock -nocomment #{path}" 
+    end
+
 
     desc "diff [PATH]", "Diff local modifications"
     def diff(path=Dir.pwd)
