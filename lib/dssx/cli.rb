@@ -26,7 +26,7 @@ module Dssx
     
 
     desc "status [PATH]", "Check status"
-    def status(path=Dir.pwd)
+    def status(path=".")
       puts "dssx status #{path}"
       
       ## Create status Report
