@@ -50,7 +50,7 @@ module Dssx
     end
 
     desc "co [URL]", "NOT IMPLEMENTED, dssc does not do checkouts"
-    def commit(url=nil)
+    def co(url=nil)
       puts "dssx does not handle checkouts" 
     end
 
