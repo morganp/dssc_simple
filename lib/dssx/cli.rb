@@ -57,7 +57,7 @@ module Dssx
     desc "commit[PATH]", "Commit changes to repository"
     def commit(path=Dir.pwd)
       puts "dssx commit #{path}" 
-      puts "=> dssc cin #{path}" 
+      puts "=> dssc ci #{path}" 
     end
 
     desc "ci [PATH]", "Alias for commit"
