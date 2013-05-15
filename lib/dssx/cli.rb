@@ -66,7 +66,7 @@ module Dssx
     end
 
     desc "lock [PATH]", "Lock file"
-    def ci(path=Dir.pwd) 
+    def lock(path=Dir.pwd) 
       puts "dssx lock #{path}" 
       puts "=> dssc co -lock -nocomment #{path}" 
     end
