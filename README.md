@@ -1,6 +1,6 @@
-
 Dssx
 ===========
+[![Gem Version](https://badge.fury.io/rb/dssx.png)](http://badge.fury.io/rb/dssx)
 
 Install
 -------
