@@ -29,7 +29,6 @@ module Dssx
     desc "status [PATH]", "Check status"
     def status(path=".")
       puts "dssx status #{path}"
-      puts options[:verbose] 
       ## Create status Report
       report = Dssx::Report.new( path )
       report.list_all
