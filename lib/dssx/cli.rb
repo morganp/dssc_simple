@@ -9,7 +9,7 @@ module Dssx
     desc "add [FILES]", "Add and Commit new files"
     def add(files)
       puts "dssx add #{files}" 
-      puts "=> dssc cin -new #{files}" 
+      puts "=> dssc ci -new #{files}" 
     end
 
 
@@ -25,10 +25,11 @@ module Dssx
     end
     
 
+    option :verbose, :type => :boolean
     desc "status [PATH]", "Check status"
     def status(path=".")
       puts "dssx status #{path}"
-      
+      puts options[:verbose] 
       ## Create status Report
       report = Dssx::Report.new( path )
       report.list_all
