@@ -1,5 +1,5 @@
 
-source :rubygems
+source 'https://rubygems.org'
 #If this is a gem 
 #Normal gems go in dssx.gemspec
 gemspec
