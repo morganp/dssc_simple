@@ -87,7 +87,7 @@ module Dssx
 
     desc "move [PATH]", "Move a file"
     def move(path=Dir.pwd)
-      puts "dssx log #{path}" 
+      puts "dssx move #{path}" 
       puts "  NOT IMPLEMENTED" 
       #puts "=> dssc vhistory #{path}" 
     end
