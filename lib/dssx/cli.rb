@@ -100,8 +100,8 @@ module Dssx
 
 
     desc "revert [PATH]", "Revert file back to previous version"
-    def revert(path=Dir.pwd)
-      path_list = path * ' '
+    def revert(path=Dir.pwd, *path_splat)
+      path_list = flatten_default_splat(path, path_splat)
       puts "dssx revert #{path_list}" 
       puts "=> dssc cancel -force #{path_list}" 
     end
