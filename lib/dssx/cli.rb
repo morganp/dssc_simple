@@ -48,8 +48,8 @@ module Dssx
     end
 
     desc "up [PATH]", "Alias for update"
-    def up(path=[Dir.pwd])
-      invokee :update
+    def up(path=Dir.pwd, *path_splat)
+      invoke :update
     end
 
     desc "co [URL]", "NOT IMPLEMENTED, dssc does not do checkouts"
