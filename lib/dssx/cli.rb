@@ -6,6 +6,16 @@ require 'thor'
 module Dssx
   class CLI < Thor
     #include Thor::Actions
+    class_option :version, :type => :boolean
+    desc "version", "Show dssx version"
+    def version
+      if options[:version]
+        puts "dssx version #{find_version}"
+      end
+    end
+    default_task :version
+
+    
     desc "add [FILES]", "Add and Commit new files"
     def add(file, *files_splat)
       file_list = flatten_default_splat(file, files_splat)
@@ -112,6 +122,21 @@ module Dssx
       def flatten_default_splat(a, *b)
         path_list = a + ' ' + b * ' ' 
       end
+      
+      ## name and versio taken from 
+      ## https://github.com/mojombo/rakegem
+      def name
+        #@name ||= Dir['*.gemspec'].first.split('.').first
+        'dssx'
+      end
+
+      def find_version
+        lib_path     = File.expand_path( File.join(File.dirname(__FILE__), '..'))
+        version_file = File.join(lib_path, "#{name}.rb")
+        line         = File.read( version_file )[/^\s*VERSION\s*=\s*.*/]
+        line.match(/.*VERSION\s*=\s*['"](.*)['"]/)[1]
+      end
+
     end
   end
 end
