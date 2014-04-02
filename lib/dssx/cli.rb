@@ -17,12 +17,12 @@ module Dssx
     desc "remove [PATH]", "Remove file/folder from repository"
     def remove(path, *path_splat)
       path_list = flatten_default_splat(path, path_splat)
-      puts "dssx rm #{path_list}" 
+      puts "dssx remove #{path_list}" 
       puts "=> dssc retire #{path_list}" 
     end
 
     desc "rm [PATH]", "Alias for remove"
-    def rm(path)
+    def rm(path, *path_splat)
       invoke :remove
     end
 
