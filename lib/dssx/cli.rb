@@ -65,7 +65,7 @@ module Dssx
     end
 
     desc "ci [PATH]", "Alias for commit"
-    def ci(path=Dir.pwd) 
+    def ci(path=Dir.pwd, *path_splat) 
       invoke :commit
     end
 
