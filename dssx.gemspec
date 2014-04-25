@@ -1,4 +1,3 @@
-
 gem_name = 'dssx'
 require File.join( File.dirname(__FILE__), 'lib', gem_name )
 
@@ -8,7 +7,8 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.authors     = ["Morgan Prior"]
   s.email       = ["morgan@amaras-tech.co.uk"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/morganp/dssx"
+  s.license     = "New-BSD"
   s.summary     = %q{ruby library for dssc revision control system. }
   s.description = %q{ruby library for dssc revision control system.
   Binary dssx included with many commands such as dssx status for short status reports modeled after 'svn status -u' 
