@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Morgan Prior"]
   s.email       = ["morgan@amaras-tech.co.uk"]
   s.homepage    = "https://github.com/morganp/dssx"
-  s.license     = "New-BSD"
+  s.license     = "BSD-3-Clause"
   s.summary     = %q{ruby library for dssc revision control system. }
   s.description = %q{ruby library for dssc revision control system.
   Binary dssx included with many commands such as dssx status for short status reports modeled after 'svn status -u' 
