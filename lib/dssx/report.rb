@@ -152,8 +152,35 @@ module Dssx
         end
       end
 
+      #Remove files listed in the .dssxignore file
+      items = dssxignore( items )
+
       #display items
       return items
+    end
+
+    def dssxignore(items)
+      #Load ignore file
+      ignore_list = find_and_load_ignore_list
+      
+      #Delete if pattern match found
+      items.delete_if do |this_item|
+        blocked = ignore_list.any? do | pattern |
+          File.fnmatch( pattern, this_item.path )
+        end
+      end
+
+      return items
+    end
+
+    def find_and_load_ignore_list
+      path = ".dssxignore"
+      if File.exist?( path )
+         ignore_list = *File.read( path ).split
+      else
+        ignore_list = []
+      end
+      return ignore_list
     end
 
     def cached_results 
