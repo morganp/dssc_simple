@@ -27,3 +27,8 @@ EXAMPLES
 
 Replacing dssc_simple_report 
     dssx status path 
+
+.dssxignore
+--
+
+From version 0.1.0, '.dssxignore' files are supported. A global file can be placed in a users home directory and starting with the current folder a hierarchical search is performed until an ignore file is found or '/' is reached.
