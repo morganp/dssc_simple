@@ -174,14 +174,37 @@ module Dssx
     end
 
     def find_and_load_ignore_list
-      path = ".dssxignore"
-      if File.exist?( path )
-         ignore_list = *File.read( path ).split
-      else
-        ignore_list = []
+      file = ".dssxignore"
+      path = Dir.home
+     
+      ignore_list = Array.new
+
+      #Add Global dssx ignore if present
+      path_file = File.join(path, file)
+      if File.exist?( path_file )
+         ignore_list = *File.read( path_file ).split
       end
-      return ignore_list
+      
+      path        = Dir.pwd
+      ignore_list = ignore_list + search_for_ignore(path, file)
+
+      return ignore_list.uniq
     end
+
+    def search_for_ignore(path, file)
+      path_file = File.join(path, file)
+
+      if File.exist?( path_file   )
+         return  *File.read( path_file ).split
+      elsif path == '/'
+         # Detect at top level nowhere left to search
+         return []
+      else
+        # Iterate looking in the parent folder
+        search_for_ignore( File.expand_path("..", path), file )
+      end
+    end
+
 
     def cached_results 
       @results ||= run_dssc_ls_mock 
